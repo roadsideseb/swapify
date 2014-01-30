@@ -1,0 +1,26 @@
+# development tools
+bumpversion
+
+# python shell & debugger
+pudb
+ipython
+
+# Testing dependencies
+mock
+tox
+unittest2
+pytest
+pytest-cache
+pytest-cov
+pytest-pep8
+
+# Code style and coverage
+flake8
+coverage
+pyflakes
+coveralls
+
+# documentation
+Sphinx
+docutils
+sphinx_rtd_theme

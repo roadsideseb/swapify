@@ -1,0 +1,17 @@
+language: python
+python:
+  - '2.7'
+env:
+  matrix:
+    - DJANGO_VERSION=">=1.4,<1.5"
+    - DJANGO_VERSION=">=1.5,<1.6"
+    - DJANGO_VERSION=">=1.6,<1.7"
+install:
+  - pip install wheel setuptools -U
+  - pip install Django$DJANGO_VERSION --use-wheel
+  - pip install . --use-wheel
+  - pip install -r requirements.txt --use-wheel
+script:
+  - py.test --cov swapify --cov-report html --pep8
+after_success:
+  - coveralls
