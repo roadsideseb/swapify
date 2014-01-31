@@ -10,13 +10,13 @@ mock
 tox
 unittest2
 pytest
-pytest-cache
 pytest-cov
 pytest-pep8
+pytest-sugar
 
 # Code style and coverage
 flake8
-coverage
+coverage==3.7.1
 pyflakes
 coveralls
 

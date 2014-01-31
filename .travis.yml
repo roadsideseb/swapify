@@ -12,6 +12,6 @@ install:
   - pip install . --use-wheel
   - pip install -r requirements.txt --use-wheel
 script:
-  - py.test --cov swapify --cov-report html --pep8
+  - py.test --pep8 --cov swapify tests/
 after_success:
   - coveralls
