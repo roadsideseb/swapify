@@ -104,7 +104,7 @@ class Swapifier(object):
 
     def replace_model(self, data):
         data, __ = re.subn(r'u?(\'|"){}(\'|")'.format(self.model),
-                       self.swappable_name, data, flags=re.I)
+                           self.swappable_name, data, flags=re.I)
         return data
 
     def replace_orm_string(self, data):
