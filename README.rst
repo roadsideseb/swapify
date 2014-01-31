@@ -5,9 +5,6 @@ swapify - Swappables in South
 .. image:: https://travis-ci.org/elbaschid/swapify.png?branch=master
     :target: https://travis-ci.org/elbaschid/swapify?branch=master
 
-.. image:: https://coveralls.io/repos/elbaschid/swapify/badge.png?branch=master
-    :target: https://coveralls.io/r/elbaschid/swapify?branch=master
-
 After the custom user model was brought upon the Django community, it had all
 the attention it well deserved and more and more re-usable apps are providing
 support for custom user models.
