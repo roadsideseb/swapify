@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='swapify',
-    version="0.1.0",
+    version="0.1.1",
     url='https://github.com/elbaschid/swapify',
     author="Sebastian Vetter",
     author_email="sebastian@roadside-developer.com",
