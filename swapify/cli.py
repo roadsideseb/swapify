@@ -46,14 +46,14 @@ class Swapifier(object):
         self.swappable_app_label = (
             u"{0.app_label}_{0.model_name}_APP_LABEL").format(self).upper()
         # e.g. AUTH_USER_MODEL_NAME
-        self.swappable_model_name = u"{}_NAME".format(self.swappable_name)
+        self.swappable_model_name = u"{0}_NAME".format(self.swappable_name)
         self.swapify_marker = SWAPIFY_MARKER.format(self)
 
-        self.orm_search_string = r'u?"orm\[\'{}\'\]"'.format(self.model)
+        self.orm_search_string = r'(?i)u?"orm\[\'{0}\'\]"'.format(self.model)
 
     def set_swapify_marker(self, data):
         data, __ = ENCODING_LINE_RE.subn(
-            r"\1\n{}".format(self.swapify_marker), data)
+            r"\1\n{0}".format(self.swapify_marker), data)
         return data
 
     def is_swapified(self, data):
@@ -64,7 +64,7 @@ class Swapifier(object):
         if settings_import in data:
             return data
         return MIGRATION_IMPORT_RE.sub(
-            r"\1\n{}".format(settings_import), data)
+            r"\1\n{0}".format(settings_import), data)
 
     def add_swappable_constants(self, data):
         constants = '\n'.join([
@@ -79,10 +79,10 @@ class Swapifier(object):
             return data
 
         return MIGRATION_CLASS_RE.sub(
-            r"{}\n\n\n\1".format(constants), data)
+            r"{0}\n\n\n\1".format(constants), data)
 
     def add_dependency(self, data):
-        app_dependency = u"({}, u'0001_initial'),".format(
+        app_dependency = u"({0}, u'0001_initial'),".format(
             self.swappable_app_label)
 
         if app_dependency in data:
@@ -93,24 +93,23 @@ class Swapifier(object):
                 r'\1\n\n    depends_on = (\n    )\n', data)
 
         data = DEPENDS_ON_RE.sub(
-            r'\1\n        {}'.format(app_dependency), data)
+            r'\1\n        {0}'.format(app_dependency), data)
         return data
 
     def replace_object_name(self, data):
         return data.replace(
             "'object_name': 'User'",
-            "'object_name': {}".format(self.swappable_model_name))
+            "'object_name': {0}".format(self.swappable_model_name))
 
     def replace_model(self, data):
-        data, __ = re.subn(r'u?(\'|"){}(\'|")'.format(self.model),
-                           self.swappable_name, data, flags=re.I)
+        data, __ = re.subn(r'(?i)u?(\'|"){0}(\'|")'.format(self.model),
+                           self.swappable_name, data)
         return data
 
     def replace_orm_string(self, data):
         data, __ = re.subn(
-            self.orm_search_string,
-            u'u"orm[\'{{}}\']".format({})'.format(self.swappable_name), data,
-            flags=re.I)
+            self.orm_search_string, u'u"orm[\'{{0}}\']".format({0})'.format(
+                self.swappable_name), data)
         return data
 
     def swapify(self, data):

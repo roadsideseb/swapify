@@ -82,7 +82,7 @@ class TestSwapifier(TestCase):
         sample_data = "'to': u\"orm['auth.User']\"})"
         self.assertEqual(
             self.swapifier.replace_orm_string(sample_data),
-            "'to': u\"orm['{}']\".format(AUTH_USER_MODEL)})")
+            "'to': u\"orm['{0}']\".format(AUTH_USER_MODEL)})")
 
     def test_can_replace_model(self):
         sample_data = "u'auth.user'"
