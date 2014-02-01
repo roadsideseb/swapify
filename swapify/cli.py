@@ -34,7 +34,6 @@ DEPENDS_ON_RE = re.compile(r'(depends_on = \()')
 class Swapifier(object):
 
     def __init__(self, model, swappable_name=None):
-        print model, swappable_name
         self.model = model  # auth.User
         self.app_label, self.model_name = self.model.split('.')
 
