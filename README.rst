@@ -2,7 +2,7 @@
 swapify - Swappables in South
 =============================
 
-.. image:: https://travis-ci.org/elbaschid/swapify.png?branch=master
+.. image:: https://api.travis-ci.org/elbaschid/swapify.png?branch=master
     :target: https://travis-ci.org/elbaschid/swapify?branch=master
 
 After the custom user model was brought upon the Django community, it had all
