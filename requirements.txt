@@ -7,15 +7,15 @@ ipython
 
 # Testing dependencies
 unittest2
-pytest==2.5.2
-pytest-cache==1.0
-pytest-cov==1.6
-pytest-pep8==1.0.5
-pytest-sugar==0.3.3
+pytest
+pytest-cache
+pytest-cov
+pytest-pep8
+pytest-sugar
 
 # Code style and coverage
-coverage==3.7.1
-coveralls==0.4.1
+coverage
+coveralls
 
 # documentation
 Sphinx
